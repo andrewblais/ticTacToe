@@ -78,16 +78,16 @@ class TicTacToe:
     def run(self):
         """Introduces the game and prompts the user to play. Offers user option to exit program."""
         self.intro_banner()
-        amt_players = input("1 or 2 players? (1/2) ")
-        self.check_quit(amt_players)
-        while not amt_players or amt_players not in ["1", "2"]:
-            amt_players = input("1 or 2 players? (1/2) ")
-        self.amt_players = int(amt_players)
         play = input("Continue? (y/n) ")
         if not play or play.lower()[0] not in ["e", "q", "y", "n"]:
             self.run()
         if play.lower()[0] in ["n"]:
             exit()
+        amt_players = input("1 or 2 players? (1/2) ")
+        self.check_quit(amt_players)
+        while not amt_players or amt_players not in ["1", "2"]:
+            amt_players = input("1 or 2 players? (1/2) ")
+        self.amt_players = int(amt_players)
         self.check_quit(play)
         if play.lower()[0] == "y":
             self.current_board = self.reset()
@@ -190,9 +190,10 @@ class TicTacToe:
         self.game_status()
         self.switch_player()
 
+
 # # # Give it a whirl!
-# ttt = TicTacToe()
-# ttt.run()
+ttt = TicTacToe()
+ttt.run()
 
 # # Access the Class docstring using help()
 # help(TicTacToe)
